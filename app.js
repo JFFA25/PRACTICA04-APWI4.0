@@ -145,7 +145,7 @@ app.get("/status", (req, res) => {
 app.get("/", (req, res) => {
     return res.status(200).json({
         message: "Welcome! Your controls of the sessions.",
-        author: "Uriel Maldonado Bernabe",
+        author: "José Francisco Flores Amador",
     });
 });
 
