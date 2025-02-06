@@ -172,7 +172,7 @@ app.get("/sessions", (req, res) => {
   });
 });
 
-const PORT = 3000;
+const PORT = 3001;
 
 // Iniciar el servidor
 app.listen(PORT, () => {
