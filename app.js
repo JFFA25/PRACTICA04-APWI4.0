@@ -130,9 +130,10 @@ app.put("/update", (req, res) => {
 // Estado de la sesión
 app.get("/status", (req, res) => {
     const sessionId = req.query.sessionId;
-
     if (!sessionId || !sessions[sessionId]) {
-        return res.status(404).json({ message: "No hay sesión activa." });
+        return res.status(404).json({ message: "No hay sesión activa." 
+            
+        });
     }
 
     res.status(200).json({
@@ -147,6 +148,28 @@ app.get("/", (req, res) => {
         message: "Welcome! Your controls of the sessions.",
         author: "José Francisco Flores Amador",
     });
+});
+
+//Sessions
+
+app.get("/sessions", (req, res) => {
+  if (!sessions || Object.keys(sessions).length === 0) {
+    return res.status(404).json({
+      message: "No hay sesiones activas.",
+    });
+  }
+
+  const activeSessions = Object.entries(sessions).map(([sessionId, sessionData]) => {
+    return {
+      sessionId,
+      sessionData,
+    };
+  });
+
+  res.status(200).json({
+    message: "Listado de sesiones activas.",
+    activeSessions,
+  });
 });
 
 const PORT = 3000;
